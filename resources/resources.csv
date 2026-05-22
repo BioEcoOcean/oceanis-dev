@@ -1,5 +1,40 @@
-Name,Link,Description,Planning,Data Collection,Data Management,Analysis & Modellling,Data Products,Societal Relevance,Communication & Outreach,Evaluation,Exploration,Ethics
-GOOS EOV Spec sheets,https://goosocean.org/eov/,Link to all EOV spec sheets,yes,yes,yes,no,no,no,no,no,no,no
-OBIS Manual,https://obis.org/manual/,Link to the OBIS manual,no,no,yes,no,no,no,no,no,no,no
-ODIS Manual,https://book.odis.org/index.html,Link to the ODIS manual to contribute to ODIS,no,yes,yes,no,no,no,no,no,no,no
-EOV Data Management,https://iobis.github.io/eov-data-management/,Link to the EOV data management guidelines,yes,yes,yes,no,no,no,no,no,no,no
+Name,Link,Description,Exploration,Data Collection,Data Management,Analysis & Modellling,Data Products,Societal Relevance,Communication & Outreach,Evaluation,Ethics
+GOOS EOV Spec sheets,https://goosocean.org/eov/,Link to all EOV spec sheets,yes,yes,yes,no,no,no,no,no,no
+OBIS Manual,https://obis.org/manual/,Link to the OBIS manual,no,no,yes,no,no,no,no,no,no
+ODIS Manual,https://book.odis.org/index.html,Link to the ODIS manual to contribute to ODIS,no,yes,yes,no,no,no,no,no,no
+EOV Data Management,https://iobis.github.io/eov-data-management/,Link to the EOV data management guidelines,yes,yes,yes,no,no,no,no,no,no
+Comparative assessment of benthic sampling platforms,https://www.nespmarinecoastal.edu.au/wp-content/uploads/2024/11/Scoping-Report-D2-Comparative-assessment-of-BENTHIC-sampling-platforms_Przeslaski_Milestone11.pdf,Standard Operating Procedures (SOP) for survey design condition assessment and trend detection,yes,yes,yes,no,no,no,no,no,no
+Comparative assessment of pelagic sampling platforms,https://www.nespmarinecoastal.edu.au/wp-content/uploads/2024/11/Scoping-Report-D2-Comparative-assessment-of-pelagic-sampling-platforms_Milestone-12_RPv3_22May2017.pdf,Standard Operating Procedures (SOP) for survey design condition assessment and trend detection,yes,yes,yes,no,no,no,no,no,no
+The Nature Conservancy,https://www.conservationbydesign.org/,Conservation action planning resources,yes,yes,yes,no,no,no,no,no,no
+GOOS focal points and national/regional networks,https://goosocean.org/who-we-are/goos-national-focal-points/,Directory of GOOS focal points and national/regional networks,yes,no,no,no,no,no,yes,no,no
+Important Marine Mammal Areas (IMMAs),https://www.marinemammalhabitat.org/,"Global map of discrete portions of habitat, important to marine mammal species",yes,no,no,no,no,yes,no,no,no
+Important Bird and Biodiversity Areas (IBAs),https://datazone.birdlife.org/,Global map of sites identified as being internationally significant for the conservation of birds and other biodiversity,yes,no,no,no,no,yes,no,no,no
+The Marine Protection Atlas of MPAs,https://mpatlas.org/,Provides an assessment of MPAs by stage of establishment and level of protection to refine a shared language and describe the expected biodiversity outcomes of MP,yes,no,no,no,no,yes,no,no,no
+International Ocean Color Coordinating Group sampling protocols,https://ioccg.org/wp-content/uploads/2022/08/ioccg-aquaticpp_protocols-2022-final.pdf,Aquatic Primary Productivity Field Protocols for Satellite Validation and Model Synthesis,,yes,no,no,no,no,no,no,no
+EOV spec sheets,https://goosocean.org/what-we-do/framework/essential-ocean-variables/,,yes,yes,yes,yes,yes,yes,no,yes,no
+HELCOM citizen science guidelines for non-indigenous species (Baltic Sea),https://helcom.fi/publications/helcom-monitoring-guidelines-for-collecting-citizen-observations-on-nis/helcom-monitoring-guidelines-for-collecting-citizen-observations-on-nis/,,yes,yes,no,no,no,no,no,no,no
+iNaturalist,https://www.inaturalist.org/,Citizen science observation platform,yes,yes,yes,no,no,no,no,no,no
+OBIS YouTube data training videos,https://www.youtube.com/@oceanbiodiversityinformati6931/playlists,,no,no,yes,no,no,no,no,no,no
+DMPTool - data management plan (DMP) builder,https://dmptool.org/,,yes,yes,yes,no,no,no,no,no,no
+Example DMP: BioEcoOcean Data Management Plan,https://zenodo.org/records/13911286,,no,yes,yes,no,no,no,no,no,no
+AODN portal - data access and sharing,https://portal.aodn.org.au/,Access to all available Australian marine and climate science data and provides the primary access to IMOS data including access to the IMOS metadata,no,yes,yes,no,no,no,no,no,no
+GOOS Regional Alliances,https://goosocean.org/who-we-are/goos-regional-alliances/,Regional coordination of data management challenges,yes,no,no,no,no,yes,yes,no,no
+EOV metadata app (possibly cross with Data Collection),https://eovmetadata.obis.org/,,no,yes,yes,no,no,no,no,no,no
+Peck et al. 2018 - review of modelling approaches for living marine resources (VECTORS project) - doi:10.1016/j.ecss.2016.05.019,https://doi.org/10.1016/j.ecss.2016.05.019,,no,no,no,yes,no,no,no,no,no
+Review paper comparing marine modelling approaches,https://doi.org/10.1016/j.dsr2.2006.01.028,Carr et al. 2006. A comparison of global estimates of marine primary production from ocean color,no,no,no,yes,no,no,no,no,no
+Copernicus Marine Service,https://marine.copernicus.eu/,Oceanographic and operational data for model inputs,no,yes,no,yes,yes,no,no,no,no
+PANGAEA - earth and environmental science data publisher (possibly cross-component with Data Collection and/or Management) ,https://www.pangaea.de/,,no,yes,yes,yes,yes,no,no,no,no
+BioOceanObserver Shiny app (CSIRO/OBIS) - biodiversity data visualisation,https://shiny.csiro.au/BioOceanObserver/,"Site that integrates, analyses and visualises data collected by the Integrated Marine Observing System (IMOS).",no,no,no,no,yes,no,no,no,no
+OBIS data products catalogue,https://products.obis.org,,no,no,no,no,yes,no,no,no,no
+Global Mangrove Watch,https://www.globalmangrovewatch.org/,Integrated remote sensing data product example,no,n,no,no,yes,no,no,no,no
+NOAA archives (e.g. Arctic primary production dataset),https://www.nodc.noaa.gov/archive/arc0028/0063065/1.1/data/0-data/,,no,yes,no,no,yes,no,no,no,no
+BioEcoOcean website (example),https://www.bioecoocean.org/,Example of a Horizon Europe website,no,no,no,no,no,no,yes,no,no
+Adopt-a-Float - ocean science communication in schools (example),https://adoptafloat.com/,Example of ocean science communication in schools,no,no,no,no,no,no,yes,no,no
+OceanExpert,https://oceanexpert.org/,A directory of marine and freshwater professionals and organizations,yes,no,no,no,no,no,yes,no,no
+GOOS EOV webinar series,https://goosocean.org/webinars/webinar-series-biology-and-ecosystems-essential-ocean-variables/,Example of international webinar series,yes,no,no,no,no,no,yes,no,no
+World Seabird Union community meetings and conferences,https://worldseabirdunion.org/world-seabird-conference-home/,Example of resource application for mini-courses and workshops embedded in existing community meetings and conferences,no,no,no,no,no,no,yes,no,no
+TPOS 2020 - Tropical Pacific Observing System review report,https://tropicalpacific.org/,Example of Regional observing system reviews reports ,no,no,no,no,no,no,no,yes,no
+IndOOS-2 - Indian Ocean Observing System review report,https://www.clivar.org/indoos-2,Example of Regional observing system reviews reports ,no,no,no,no,no,no,no,yes,no
+Ocean Best Practices repository (Exploration  Data Collection Analysis & Modelling Data Products),https://www.oceanbestpractices.org/,,yes,yes,no,yes,yes,no,no,yes,no
+Marine sampling field manuals - benthic invertebrates fish and more,https://marine-sampling-field-manual.github.io/,,yes,yes,no,no,no,no,no,yes,no
+MBON community of practice,https://marinebon.org/,,yes,no,no,no,no,no,yes,no,no
