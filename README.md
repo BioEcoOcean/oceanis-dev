@@ -1,6 +1,6 @@
 # blueprint-dev
 
-Sandbox for developing the interactive Blueprint product
+Repo for development of the interactive OCEANIS tool.
 
 ## Add contributors
 
