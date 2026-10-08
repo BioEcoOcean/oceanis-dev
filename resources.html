@@ -1,81 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive OCEANIS</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="resource-list.js"></script>
-  <div class="logo-container">
-    <img src="images/bioecoocean_logo.png" alt="BioEcoOcean Logo" height="100px">
-    <img src="images/iode-unesco.png" alt="BioEcoOcean Logo" height="100px">
-    <img src="images/OBIS_logo.png" alt="BioEcoOcean Logo" height="100px"> 
-  </div>
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="navbar">OCEANIS - Collaborative Planning for Integrated Ocean Action</div>
-                <div class="hamburger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-      </div>
-      <div class="navbar-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contributers.html">Contributors</a></li>
-        </ul>
-      </div>
-    </nav>
-    <script>
-            function toggleMenu() {
-                const navMenu = document.querySelector(".navbar-menu");
-                navMenu.classList.toggle("show");
-            }
-      </script>
-  </header>
-<div class="content">
-<h1> Resources</h1>
-<p>Here you will find a list of resources that are relevant to each of the OCEANIS components. Check each box to display resources associated with a specific component.</p>
-<br><br>
-<p><em>Under development: more content to come!</em></p><br>
-<p>Resources:</p>
-<div id="filter-controls" class="tag-filter">
-  
-  <!-- Checkboxes will be dynamically generated here -->
-</div>
-<div>
-    <label class="switch-small">
-      <input type="checkbox" id="exclusive-filter-toggle">
-      <span class="slider-small"></span>
-    </label><span id="toggle-label-small">Show only resources with selected tags exclusively</span>
-    <button id="select-all-btn">Select All</button>
-    <button id="deselect-all-btn">Deselect All</button>    
-  </div>
-<div id="resources-list">
-  <!-- Resource list will be dynamically generated here -->
-</div>
-</div>
-<footer class="footer">
-  <div class="footer-flex">
-    <div class="footer-col">
-            <img src="images/bioecoocean_logo.png" alt="BioEcoOcean Logo" height="50px" style="filter: brightness(100)">
-            <br>
-            <img src="images/OBIS_logo.png" alt="OBIS Logo" height="50px" style="filter: brightness(100)">
-        </div>
-    <div class="footer-col">
-        <p><img src="images/GitHub_Logo-white.png" alt="GitHub Logo" height="20px"> <a href="https://github.com/BioEcoOcean/blueprint-dev">GitHub development repository</a> <br>
-          <b>Disclaimer:</b> AI (ChatGPT-4 and -5) was used to support the development of this application. All code generated was reviewed, tested, and edited as necessary before being implemented.</p>
-    </div>
-    <div class="footer-col">
-      <p><b>Funding:</b> Funded by the European Union under the Horizon Europe Programme, Grant Agreement No. 101136748 (BioEcoOcean). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.</p>
-    </div>
-  </div>
-</footer>
+---
+layout: default
+title: Resource library
+description: Search resources by topic, OCEANIS component, or Essential Ocean Variable.
+body_class: resources-page
+---
+<header class="page-heading">
+  <p class="eyebrow">A working library</p>
+  <h1>Resources for ocean action</h1>
+  <p>Find guidance, tools, data, and examples connected to OCEANIS components. Search by keyword or narrow the list by component.</p>
+</header>
 
-</body>
-</html>
+<section class="resource-browser" id="resource-app" data-csv-url="{{ '/resources/resources.csv' | relative_url }}" aria-label="Search and filter resources">
+  <label class="search-label" for="resource-search">Search resources</label>
+  <input id="resource-search" class="resource-search" type="search" placeholder="Try a topic, resource name, or EOV" autocomplete="off">
+  <p class="search-hint">Search includes titles, descriptions, and any EOV labels added to the catalog.</p>
+
+  <fieldset class="component-filters">
+    <legend>OCEANIS components</legend>
+    <div id="filter-controls" class="filter-options"></div>
+    <div class="filter-actions">
+      <button id="select-all-btn" type="button">Select all</button>
+      <button id="deselect-all-btn" type="button">Clear components</button>
+      <label class="exclusive-option"><input type="checkbox" id="exclusive-filter-toggle"> Match only selected components</label>
+    </div>
+  </fieldset>
+
+  <p id="resource-count" class="resource-count" aria-live="polite"></p>
+  <div id="resources-list" class="resources-list" aria-live="polite"></div>
+</section>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="{{ '/resource-list.js' | relative_url }}"></script>

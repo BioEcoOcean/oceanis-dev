@@ -1,85 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive OCEANIS</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <div class="logo-container">
-    <img src="images/bioecoocean_logo.png" alt="BioEcoOcean Logo" height="100px">
-    <img src="images/iode-unesco.png" alt="BioEcoOcean Logo" height="100px">
-    <img src="images/OBIS_logo.png" alt="BioEcoOcean Logo" height="100px">
-  </div>
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="navbar">OCEANIS - Collaborative Planning for Integrated Ocean Action</div>
-                <div class="hamburger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-      </div>
-      <div class="navbar-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contributers.html">Contributors</a></li>
-        </ul>
-      </div>
-    </nav>
-    <script>
-            function toggleMenu() {
-                const navMenu = document.querySelector(".navbar-menu");
-                navMenu.classList.toggle("show");
-            }
-      </script>
-  </header>
-<div class="content">
-<h1> Contributors</h1>
-<p>Here you will find a list of individuals and groups that have contributed to the development of OCEANIS. 
-    Note we are still setting up a system to ensure all Contributors are properly acknowledged, so if you do not see your name here, let us know!</p>
-</p>
-<br><br>
-<p><em>Under development: more to come!</em></p><br>
-<div id="contributors-list"></div>
-</div>
-<footer class="footer">
-  <div class="footer-flex">
-    <div class="footer-col">
-            <img src="images/bioecoocean_logo.png" alt="BioEcoOcean Logo" height="50px" style="filter: brightness(100)">
-            <br>
-            <img src="images/OBIS_logo.png" alt="OBIS Logo" height="50px" style="filter: brightness(100)">
-        </div>
-    <div class="footer-col">
-        <p><img src="images/GitHub_Logo-white.png" alt="GitHub Logo" height="20px"> <a href="https://github.com/BioEcoOcean/blueprint-dev">GitHub development repository</a> <br>
-          <b>Disclaimer:</b> AI (ChatGPT-4 and -5) was used to support the development of this application. All code generated was reviewed, tested, and edited as necessary before being implemented.</p>
-    </div>
-    <div class="footer-col">
-      <p><b>Funding:</b> Funded by the European Union under the Horizon Europe Programme, Grant Agreement No. 101136748 (BioEcoOcean). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.</p>
-    </div>
-  </div>
-</footer>
+---
+layout: default
+title: Contributors
+description: People and organizations who have contributed to OCEANIS.
+---
+<header class="page-heading">
+  <p class="eyebrow">The people behind the framework</p>
+  <h1>Contributors</h1>
+  <p>OCEANIS was developed through collaborative work across disciplines and organizations. Here you will find a list of individuals and groups that have contributed to its development. Note: we are still setting up a system to ensure all Contributors are properly acknowledged, so if you do not see your name here, let us know!</p>
+</header>
+<div id="contributors-list" class="contributors-list" aria-live="polite"></div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
-  d3.csv("contribs/contributors.csv").then(function(data) {
-    // Filter out empty rows (in case the CSV is empty)
-    const filtered = data.filter(d => d["First Name"] && d.Organization);
-    if (filtered.length === 0) {
-      document.getElementById("contributors-list").innerHTML = "<em>No contributors listed yet.</em>";
+  d3.csv("{{ '/contribs/contributors.csv' | relative_url }}").then((data) => {
+    const contributors = data.filter((person) => person["First Name"] && person.Organization);
+    const list = document.getElementById("contributors-list");
+    if (contributors.length === 0) {
+      list.textContent = "No contributors listed yet.";
       return;
     }
-    let html = "<ul>";
-    filtered.forEach(d => {
-      html += `<li>${d["First Name"]} ${d["Last Name"]} (${d.Organization})</li>`;
+
+    const items = contributors.map((person) => {
+      const item = document.createElement("p");
+      item.textContent = `${person["First Name"]} ${person["Last Name"] || ""} (${person.Organization})`;
+      return item;
     });
-    html += "</ul>";
-    document.getElementById("contributors-list").innerHTML = html;
-  }).catch(function(error) {
-    document.getElementById("contributors-list").innerHTML = "<em>Could not load contributors list.</em>";
+    list.replaceChildren(...items);
+  }).catch(() => {
+    document.getElementById("contributors-list").textContent = "Could not load contributors list.";
   });
 </script>
-
-</body>
-</html>

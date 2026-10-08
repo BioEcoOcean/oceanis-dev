@@ -1,0 +1,17 @@
+<header class="site-header">
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="OCEANIS home">
+      <img class="brand-icon" src="{{ '/images/favicon_bioecoocean.ico' | relative_url }}" alt="" width="32" height="32">
+      <span class="brand-copy"><strong>OCEANIS</strong><small>Collaborative planning for integrated ocean action</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="primary-navigation">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Overview</a>
+      <a href="{{ '/interactive.html' | relative_url }}" {% if page.url == '/interactive.html' %}aria-current="page"{% endif %}>Interactive tool</a>
+      <a href="{{ '/resources.html' | relative_url }}" {% if page.url == '/resources.html' %}aria-current="page"{% endif %}>Resources</a>
+      <a href="{{ '/contributers.html' | relative_url }}" {% if page.url == '/contributers.html' %}aria-current="page"{% endif %}>Contributors</a>
+    </div>
+  </nav>
+</header>

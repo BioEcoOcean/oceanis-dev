@@ -1,0 +1,9 @@
+title: OCEANIS
+description: Collaborative planning for integrated ocean action.
+baseurl: "/oceanis-dev"
+url: ""
+
+exclude:
+  - blueprint-dev-local
+  - .jekyll-cache
+  - README.md

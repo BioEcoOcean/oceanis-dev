@@ -1,93 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive OCEANIS</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
-  <div class="logo-container">
-    <img src="images/bioecoocean_logo.png" alt="BioEcoOcean Logo" height="100px">
-    <img src="images/iode-unesco.png" alt="BioEcoOcean Logo" height="100px">
-    <img src="images/OBIS_logo.png" alt="BioEcoOcean Logo" height="100px"> 
-  </div>
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="navbar">OCEANIS - Collaborative Planning for Integrated Ocean Action</div>
-        <div class="hamburger" onclick="toggleMenu()">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      <div class="navbar-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contributers.html">Contributors</a></li>
-        </ul>
-      </div>
-    </nav>
-    <script>
-            function toggleMenu() {
-                const navMenu = document.querySelector(".navbar-menu");
-                navMenu.classList.toggle("show");
-            }
-      </script>
-  </header>
-<div class="content">
-  <h1>Introduction to OCEANIS</h1>
-  <p><em>Note: this tool is currently in  development.</em></p><br>
-  <p><b>OCEANIS</b>, formerly known as the Blueprint for Integrated Ocean Science (BIOS), is a <b>collaborative, non-prescriptive planning tool for integrated ocean action</b>. It supports structured question-based workshops that encourage holistic thinking, cross-sector collaboration, and reflective planning across all aspects of a project, program, proposal, or other initiative. OCEANIS can be used at any project stage, and we encourage coming back to it regularly.</p>
-  <br>
-  <p>OCEANIS is visualised by a <b>Spiderweb with interconnected components</b>. Each component consists of descriptors, themes, and associated question words, as well as questions connecting the components. Designed for diverse users, OCEANIS was developed through a co-creative process, involving interdisciplinary input from surveys, interviews, workshops, and feedback loops.</p>
-  <br>
-  <p> We believe that each component in the ocean observing value chain is interlinked and important. Explore the <b>interactive OCEANIS spiderweb</b> below.</p>
-  <br>
-  <p>Provide feedback on OCEANIS by filling in this <a href="https://doit.medfarm.uu.se/bin/kurt3/kurt/8877816">survey</a>. To provide feedback on this interactive tool, or to report issues, please submit an issue to our <a href="https://github.com/BioEcoOcean/blueprint-dev/issues">GitHub repository</a>.</p>
-  <br>
-  <div id="controls">
-    <label class="switch">
-      <input type="checkbox" id="toggle-selection-mode">
-      <span class="slider"></span>
-    </label>
-    <span id="toggle-label">Single Select</span>
-    <button id="deselect-all">Deselect All</button>
-  </div>
-  <p>Use the Single or Multi-Select mode to focus on individual components or explore multiple connections at once.</p>
-  <br><p><b>Example:</b> Component: <i>Exploration</i>, Descriptor: <i>Map</i>, Theme: <i>Knowledge landscape</i>. Question word: <i>How</i>. Create the question: <i>How do we map out the knowledge landscape?</i></p>
-  <!-- Container for the spiderweb and info panel -->
-  <div id="spiderweb-container">
-    <div id="spiderweb"></div>
-    <div id="tooltip" ></div>
-    <div id="info-panel">
-      <div id="info-content"></div>
-      <button id="close-info-panel">Close</button>      
+---
+layout: default
+title: Overview
+description: Discover OCEANIS, a collaborative framework for integrated ocean action.
+body_class: home-page
+---
+<section class="home-hero">
+  <div class="hero-copy">
+    <p class="eyebrow">A framework for holistic thinking and planning</p>
+    <h1>Plan with the whole system in mind</h1>
+    <p class="hero-intro"><strong>OCEANIS</strong> is a collaborative, non-prescriptive planning tool for integrated ocean action. It helps you ask questions, connect disciplines, and reflect across all aspects of a project, program, proposal, or other initiative.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{ '/interactive.html' | relative_url }}">Explore the framework <span aria-hidden="true">&#8594;</span></a>
     </div>
-  </div>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="script.js"></script>
-  <br>
-  </div>
 
-  <footer class="footer">
-  <div class="footer-flex">
-    <div class="footer-col">
-            <img src="images/bioecoocean_logo.png" alt="BioEcoOcean Logo" height="50px" style="filter: brightness(100)">
-            <br>
-            <img src="images/OBIS_logo.png" alt="OBIS Logo" height="50px" style="filter: brightness(100)">
-        </div>
-    <div class="footer-col">
-        <p><img src="images/GitHub_Logo-white.png" alt="GitHub Logo" height="20px"> <a href="https://github.com/BioEcoOcean/blueprint-dev">GitHub development repository</a> <br>
-          <b>Disclaimer:</b> AI (ChatGPT-4 and -5) was used to support the development of this application. All code generated was reviewed, tested, and edited as necessary before being implemented.</p>
-    </div>
-    <div class="footer-col">
-      <p><b>Funding:</b> Funded by the European Union under the Horizon Europe Programme, Grant Agreement No. 101136748 (BioEcoOcean). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA). Neither the European Union nor the granting authority can be held responsible for them.</p>
-    </div>
   </div>
-</footer>
+  <figure class="framework-figure">
+    <img src="{{ '/images/Spiderweb.png' | relative_url }}" alt="OCEANIS spiderweb framework showing interconnected components, themes, and question words">
+    <figcaption>The OCEANIS spiderweb: interconnected components, themes, and questions.</figcaption>
+  </figure>
+</section>
 
-</body>
-</html>
+<section class="home-intro" aria-labelledby="about-oceanis">
+  <div>
+    <p class="eyebrow">Breaking siloed thinking</p>
+    <h2 id="about-oceanis">One objective. Many connected questions.</h2>
+  </div>
+  <p>Use OCEANIS in workshops, proposals, projects, and programmes, at any stage and as often as useful. Visualised as a Spiderweb of interconnected components, the OCEANIS framework highlights that these components are interdependent rather than linear steps. This helps us understand relationships, identify gaps, and strengthen the overall effectiveness of our work. 
+    <br>
+  The framework can be applied to projects, programmes, observing systems, or partnerships at any stage, and is relevant not only for ocean observing and biodiversity initiatives, but is designed to support any kind of work or collaborative efforts. The framework grew through a co-creative process with interdisciplinary contributors and is designed to support reflection, not prescribe a single route.</p>
+</section>
+
+<nav class="home-pathways" aria-label="Explore OCEANIS">
+  <a href="{{ '/interactive.html' | relative_url }}"><span>🔎</span><strong>Explore the framework</strong><span aria-hidden="true">&#8599;</span></a>
+  <a href="{{ '/resources.html' | relative_url }}"><span>ℹ️</span><strong>Find useful resources</strong><span aria-hidden="true">&#8599;</span></a>
+</nav>

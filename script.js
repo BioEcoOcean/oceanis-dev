@@ -418,16 +418,12 @@ function updateInfoPanel() {
     .map(node => `<strong>${node.id}:</strong> ${node.themes.join(", ")}`)
     .join("<br><br>");
 
-  const associatedQuestions = questions.filter(q => allSelectedIds.some(id => q.tags.includes(id)))
-    .map(q => `<li>${q.text}</li>`).join("");
-
     const selectedComponents = allSelectedIds.join(", ");
-    if (allSelectedIds.length > 0 || associatedQuestions) {
+    if (allSelectedIds.length > 0) {
       showInfoPanel(`
         <h2>Blueprint Component(s):</h2><p>${selectedComponents}</p>
-        <h2>Descriptor Words:</h2><p>${selectedDescriptors}</p>
-        <h2>Themes:</h2><p>${selectedThemes}</p>
-        <h2>Question Words:</h2>${associatedQuestions}
+        <h2><span class="concept-highlight concept-highlight-descriptor">Descriptor Words:</span></h2><p>${selectedDescriptors}</p>
+        <h2><span class="concept-highlight concept-highlight-themes">Themes:</span></h2><p>${selectedThemes}</p>
         `);
     } else {
     hideInfoPanel();

@@ -1,113 +1,119 @@
-function updateResourceList(data) {
-  const activeTags = Array.from(document.querySelectorAll(".tag-filter input:checked"))
-    .map(input => input.value);
+const resourceApp = document.querySelector("#resource-app");
+const resourceList = document.querySelector("#resources-list");
+const resourceCount = document.querySelector("#resource-count");
+const filterControls = document.querySelector("#filter-controls");
+const nonComponentColumns = new Set(["Name", "Link", "Description", "EOVs"]);
 
-  const exclusiveToggle = document.getElementById("exclusive-filter-toggle").checked;
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
 
-  console.log("Active tags:", activeTags); // Debugging line
-  console.log("Exclusive mode:", exclusiveToggle); // Debugging line
+function getResourceComponents(resource) {
+  return Object.keys(resource).filter((key) =>
+    !nonComponentColumns.has(key) && String(resource[key] ?? "").trim().toLowerCase() === "yes"
+  );
+}
 
-  // Filter resources based on active tags
-  const filteredData = data.filter(d => {
-    const resourceTags = Object.keys(d)
-      .filter(key => !["Name", "Link", "Description"].includes(key) && d[key].toLowerCase() === "yes");
-    if (exclusiveToggle) {
-      // In exclusive mode, include only resources with EXACTLY the active tags
-      return resourceTags.length === activeTags.length && activeTags.every(tag => resourceTags.includes(tag));
-    } else {
-      // Default mode: include resources with ANY of the active tags
-      return activeTags.some(tag => resourceTags.includes(tag));
+function getEOVs(resource) {
+  return String(resource.EOVs ?? "")
+    .split(/[;|]/)
+    .map((eov) => eov.trim())
+    .filter(Boolean);
+}
+
+function getSafeLink(value) {
+  try {
+    const url = new URL(value, window.location.origin);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
+function renderResources(data) {
+  const activeComponents = Array.from(filterControls.querySelectorAll("input:checked"))
+    .map((input) => input.value);
+  const searchTerm = document.querySelector("#resource-search").value.trim().toLocaleLowerCase();
+  const matchAllComponents = document.querySelector("#exclusive-filter-toggle").checked;
+
+  const filteredResources = data.filter((resource) => {
+    const components = getResourceComponents(resource);
+    const matchesComponents = activeComponents.length === 0
+      ? components.length === 0
+      : (matchAllComponents
+        ? activeComponents.every((component) => components.includes(component))
+        : activeComponents.some((component) => components.includes(component)));
+    const searchableText = Object.entries(resource)
+      .filter(([field]) => field !== "Link")
+      .map(([, value]) => String(value ?? ""))
+      .join(" ")
+      .toLocaleLowerCase();
+    return matchesComponents && (!searchTerm || searchableText.includes(searchTerm));
+  });
+
+  resourceCount.textContent = `Showing ${filteredResources.length} of ${data.length} resources`;
+  if (filteredResources.length === 0) {
+    resourceList.innerHTML = '<p class="empty-state">No resources match this search. Try another term or clear a component filter.</p>';
+    return;
+  }
+
+  resourceList.innerHTML = filteredResources.map((resource) => {
+    const name = escapeHTML(resource.Name || "Untitled resource");
+    const link = getSafeLink(resource.Link);
+    const title = link
+      ? `<a href="${escapeHTML(link)}" target="_blank" rel="noopener noreferrer">${name}<span aria-hidden="true"> &#8599;</span></a>`
+      : name;
+    const description = resource.Description ? `<p>${escapeHTML(resource.Description)}</p>` : "";
+    const componentTags = getResourceComponents(resource).map((tag) => `<span class="tag">${escapeHTML(tag)}</span>`);
+    const eovTags = getEOVs(resource).map((eov) => `<span class="tag tag-eov">${escapeHTML(eov)}</span>`);
+    const tags = [...componentTags, ...eovTags].join("");
+
+    return `<article class="resource-entry"><h2>${title}</h2>${description}${tags ? `<div class="resource-tags">${tags}</div>` : ""}</article>`;
+  }).join("");
+}
+
+function createComponentFilters(data) {
+  const columns = Object.keys(data[0]).filter((column) => !nonComponentColumns.has(column));
+  filterControls.innerHTML = columns.map((component, index) => `
+    <label class="filter-option">
+      <input type="checkbox" value="${escapeHTML(component)}" checked>
+      <span>${escapeHTML(component)}</span>
+    </label>`).join("");
+}
+
+async function initializeResourceBrowser() {
+  try {
+    const data = await d3.csv(resourceApp.dataset.csvUrl);
+    if (data.length === 0) {
+      resourceList.innerHTML = '<p class="empty-state">No resources are listed yet.</p>';
+      resourceCount.textContent = "";
+      return;
     }
-  });
 
-  // If no resources match, show a message
-  if (filteredData.length === 0) {
-    document.getElementById("resources-list").innerHTML = "<em>No resources match the selected filters.</em>";
-    return;
+    createComponentFilters(data);
+    filterControls.addEventListener("change", () => renderResources(data));
+    document.querySelector("#resource-search").addEventListener("input", () => renderResources(data));
+    document.querySelector("#exclusive-filter-toggle").addEventListener("change", () => renderResources(data));
+    document.querySelector("#select-all-btn").addEventListener("click", () => {
+      filterControls.querySelectorAll("input").forEach((input) => { input.checked = true; });
+      renderResources(data);
+    });
+    document.querySelector("#deselect-all-btn").addEventListener("click", () => {
+      filterControls.querySelectorAll("input").forEach((input) => { input.checked = false; });
+      renderResources(data);
+    });
+    renderResources(data);
+  } catch (error) {
+    console.error("Could not load the resource catalog:", error);
+    resourceCount.textContent = "";
+    resourceList.innerHTML = '<p class="empty-state">Could not load the resource catalog.</p>';
   }
-
-  // Generate HTML for the filtered list
-  let html = "<ul>";
-  filteredData.forEach(d => {
-    const tags = Object.keys(d)
-      .filter(key => !["Name", "Link", "Description"].includes(key) && d[key].toLowerCase() === "yes");
-    html += `<li>
-      <strong><a href="${d.Link}" target="_blank">${d.Name}</a></strong>
-      <span>${d.Description}</span><br>
-      <span>${tags.map(tag => `<span class="tag">${tag}</span>`).join(" ")}</span>
-    </li><br>`;
-  });
-  html += "</ul>";
-
-  // Update the resource list with filtered resources
-  document.getElementById("resources-list").innerHTML = html;
 }
 
-// Generate filter checkboxes based on unique tag headers
-function generateFilterCheckboxes(data) {
-  const tagHeaders = Object.keys(data[0]).filter(key => !["Name", "Link", "Description"].includes(key));
-
-  console.log("Tag Headers:", tagHeaders); // Debugging line
-
-  let filterHTML = "";
-  tagHeaders.forEach(tag => {
-    filterHTML += `
-      <div>
-        <label>
-          <input type="checkbox" value="${tag}" checked> ${tag}
-        </label>
-      </div>`;
-  });
-
-  document.getElementById("filter-controls").innerHTML = filterHTML;
-}
-
-// Attach event listeners to checkboxes
-function attachFilterListeners(data) {
- const checkboxes = document.querySelectorAll(".tag-filter input");
-  checkboxes.forEach(checkbox => {
-    checkbox.addEventListener("change", () => updateResourceList(data));
-  });
-
-  const exclusiveToggle = document.getElementById("exclusive-filter-toggle");
-  exclusiveToggle.addEventListener("change", () => updateResourceList(data));
-
-  const selectAllButton = document.getElementById("select-all-btn");
-  selectAllButton.addEventListener("click", () => {
-    // Check all checkboxes
-    checkboxes.forEach(checkbox => checkbox.checked = true);
-
-    // Update the resource list after selecting all
-    updateResourceList(data);
-  });
-
-  const deselectAllButton = document.getElementById("deselect-all-btn");
-  deselectAllButton.addEventListener("click", () => {
-    // Uncheck all checkboxes
-    checkboxes.forEach(checkbox => checkbox.checked = false);
-
-    // Update the resource list after deselecting all
-    updateResourceList(data);
-  });
-}
-
-// Load data and initialize filters
-d3.csv("resources/resources.csv").then(function (data) {
-  // If no data, show an empty state message
-  if (!data || data.length === 0) {
-    document.getElementById("resources-list").innerHTML = "<em>No resources listed yet.</em>";
-    return;
-  }
-
-  // Generate and populate filters
-  generateFilterCheckboxes(data);
-
-  // Populate initial resource list
-  updateResourceList(data);
-
-  // Attach filter listeners
-  attachFilterListeners(data);
-}).catch(function (error) {
-  console.error("Error loading resources:", error);
-  document.getElementById("resources-list").innerHTML = "<em>Could not load resources list.</em>";
-});
+initializeResourceBrowser();

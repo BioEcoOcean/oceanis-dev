@@ -1,0 +1,57 @@
+---
+layout: default
+title: Interactive tool
+description: Explore the OCEANIS spiderweb and its interconnected components.
+body_class: interactive-page
+---
+<header class="page-heading">
+  <p class="eyebrow">Explore the framework</p>
+  <h1>OCEANIS interactive spiderweb</h1>
+  <p class="development-note">Note: This interactive tool is in active development.</p>
+  
+</header>
+<p>OCEANIS is visualised by a <b>Spiderweb with interconnected components</b>. Each component consists of <span class="concept-highlight concept-highlight-descriptor">descriptor words</span>, <span class="concept-highlight concept-highlight-themes">associated themes</span>, and can be combined with <span class="concept-highlight concept-highlight-question">question words</span> to generate questions. We encourage you to explore components including the links between them.</p>
+<br>
+<p><b>Select a component or connection</b> to explore its descriptors, themes, and question words.</p>
+<section class="tool-section" aria-label="Interactive OCEANIS spiderweb">
+  <div id="controls">
+    <label class="switch" aria-label="Enable multi-select mode">
+      <input type="checkbox" id="toggle-selection-mode">
+      <span class="slider"></span>
+    </label>
+    <span id="toggle-label">Single Select</span>
+    <button id="deselect-all" type="button">Deselect all</button>
+  </div>
+  
+  <p class="tool-hint">Use the Single or Multi-Select mode to focus on individual components or explore multiple connections at once.
+    <br>
+    </p>
+  <div id="spiderweb-container">
+    <div id="question-words" role="group" aria-label="OCEANIS question words">
+      <p class="question-words-title">Create questions by combining:</p>
+      <div class="question-word-list">
+        <span class="question-word">WHO</span>
+        <span class="question-word">WHERE</span>
+        <span class="question-word">WHEN</span>
+        <span class="question-word">WHAT</span>
+        <span class="question-word">WHY</span>
+        <span class="question-word">HOW</span>
+      </div>
+      <span class="question-formula-plus" aria-hidden="true">+</span>
+      <div class="question-formula" aria-label="Descriptor words plus themes of interest">
+        <span class="question-formula-step">Descriptor words</span> 
+        <span class="question-formula-step question-formula-themes">Themes of interest</span>
+      </div>
+      <p><b>Example:</b><i> Exploration + <span class="concept-highlight concept-highlight-question">How</span> + <span class="concept-highlight concept-highlight-descriptor">Map</span> + <span class="concept-highlight concept-highlight-themes">Knowledge landscape</span> = “How do we map out the knowledge landscape?”</i></p>
+    </div>
+    <div id="spiderweb"></div>
+    <div id="tooltip"></div>
+    <aside id="info-panel" aria-live="polite">
+      <div id="info-content"></div>
+      <button id="close-info-panel" type="button">Close</button>
+    </aside>
+  </div>
+</section>
+<p class="feedback-note">Help improve OCEANIS: <a href="https://github.com/BioEcoOcean/oceanis-dev/issues/new">report an issue</a>.</p>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="{{ '/script.js' | relative_url }}"></script>
