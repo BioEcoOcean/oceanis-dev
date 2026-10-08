@@ -2,6 +2,11 @@
 
 Repo for development of the interactive OCEANIS tool.
 
+## Site structure and local preview
+
+The site uses GitHub Pages' built-in Jekyll support. Shared navigation and footer markup live in `_includes/`, the page wrapper is in `_layouts/default.html`, and page content stays in small root-level HTML files. The main pages are `index.html` (overview), `interactive.html` (spiderweb), and `resources.html` (resource library).
+
+Install Ruby and Jekyll, then run `jekyll serve --baseurl ""` from the repository root for a local preview. Open the local URL printed by Jekyll; the site rebuilds when files change. The workflow in `.github/workflows/deploy.yml` builds and deploys the site on pushes to `main` and can also be run manually.
 ## Add contributors
 
 To add to the list of contributors, go to the contribs folder and open the [contributors](https://github.com/BioEcoOcean/blueprint-dev/blob/zoom-patch/contribs/contributors.csv).csv file. To edit the file, you have two options:
