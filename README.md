@@ -22,5 +22,5 @@ To add to the list of contributors, go to the contribs folder and open the [cont
 ## Host script locally
 
 1. Navigate to the directory containing project files. For example: cd /path/to/your/project
-2. Start the HTTP server: `python -m http.server 8000`
+2. Start the HTTP server: `jekyll serve --baseurl= --port 8001`
 3. Navigate to http://localhost:8000 

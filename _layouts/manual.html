@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<header class="page-heading">
+  <p class="eyebrow">{{ page.eyebrow }}</p>
+  <h1>{{ page.heading | default: page.title }}</h1>
+  <p>{{ page.description }}</p>
+</header>
+
+{% comment %}The page's kramdown TOC is rendered above the end-toc marker; everything after it is the manual body.{% endcomment %}
+{% assign manual_parts = content | split: '<!-- end-toc -->' %}
+<div class="manual-layout">
+  <details class="manual-toc" open>
+    <summary>Contents</summary>
+    <nav aria-label="Manual contents">
+      {{ manual_parts[0] }}
+    </nav>
+  </details>
+  <article class="manual-content">
+    {{ manual_parts[1] }}
+  </article>
+</div>
+<script src="{{ '/assets/js/manual.js' | relative_url }}" defer></script>

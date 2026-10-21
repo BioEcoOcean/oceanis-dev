@@ -9,7 +9,13 @@
     </button>
     <div class="nav-links" id="primary-navigation">
       <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Overview</a>
-      <a href="{{ '/interactive.html' | relative_url }}" {% if page.url == '/interactive.html' %}aria-current="page"{% endif %}>Interactive tool</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="framework-menu" {% if page.url == '/interactive.html' or page.url == '/manual.html' %}data-current="true"{% endif %}>OCEANIS Framework</button>
+        <div class="nav-dropdown-menu" id="framework-menu">
+          <a href="{{ '/interactive.html' | relative_url }}" {% if page.url == '/interactive.html' %}aria-current="page"{% endif %}>Interactive tool</a>
+          <a href="{{ '/manual.html' | relative_url }}" {% if page.url == '/manual.html' %}aria-current="page"{% endif %}>Manual</a>
+        </div>
+      </div>
       <a href="{{ '/resources.html' | relative_url }}" {% if page.url == '/resources.html' %}aria-current="page"{% endif %}>Resources</a>
       <a href="{{ '/contributers.html' | relative_url }}" {% if page.url == '/contributers.html' %}aria-current="page"{% endif %}>Contributors</a>
     </div>
