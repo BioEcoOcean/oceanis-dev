@@ -46,7 +46,6 @@ OCEANIS can be used in different ways to support individuals or groups to reflec
 * explore connections that might otherwise be overlooked
 * create action plans
 
-OCEANIS is especially meant to encourage holistic thinking and support discussions for areas we may be less familiar with or do not often engage with. Often, we may not even know what questions to ask or where to begin. OCEANIS supports us in strengthening familiarity and giving us direction on what to questions to. We cover this topic in more detail in [Chapter 2](#chapter-2).
 
 > **Key point**
 >
@@ -102,7 +101,6 @@ Really, the OCEANIS framework is for anyone who wishes to strengthen their work 
 
 OCEANIS provides a **structured framework and pathway** to explore cross-domain solutions and support **moving beyond siloed thinking**. It creates an intentional space to connect perspectives, broaden understanding, and collaboratively develop action plans.
 
-The framework encourages us to ask questions that are meant to be addressed collaboratively, often with people from different areas of expertise. The idea is not to have an answer for every question, but to identify those that are relevant and require further investigation. Questions inspire us to not only think about familiar aspects, but also new considerations and to encourage the involvement of relevant people (for example, a modeler, a communicator, and a strategist) to work together.
 
 Traditional project planning often proceeds component by component (data collection, then analysis, then communication), often without considering the connections between these stages. OCEANIS provides a structured alternative by:
 
@@ -131,7 +129,6 @@ At the outset of a new project, use OCEANIS to ensure planning covers all dimens
 
 #### Conference preparation
 
-Before attending a major conference or stakeholder meeting, use OCEANIS as an individual or a small team to generate a focused set of questions you want to explore with a broader audience. Working through the framework in advance helps us identify gaps and uncertainties in our own thinking, areas we may want to explore with others, and gives us a structured way to turn conversations into productive collaborations.
 
 #### Addressing a societal need
 
@@ -139,7 +136,6 @@ When responding to a specific societal challenge, such as supporting a coastal c
 
 #### Identifying workflow gaps
 
-Use OCEANIS to evaluate an existing programme or workflow by working through each component and asking where things are working well and where they are not. This is particularly useful for identifying disconnects between components, for example, data being collected but not managed in a way that makes it FAIR and/or usable for analysis or decision-making.
 
 #### Evaluating a current system or project
 
@@ -147,7 +143,6 @@ At a project milestone or end point, OCEANIS provides a structured framework for
 
 #### Gaining a holistic overview
 
-For teams new to a system, or for individuals stepping into a new role, OCEANIS offers a way to map the full landscape of an initiative. It provides us with a shared framework that eases the burden of getting up to speed, whether entering new system or reviewing a previous monitoring period. Working through the spiderweb together also builds shared understanding of how different parts of the system relate to one another, and may highlight the fact that team members may approach the same work from different, valuable perspectives.
 
 #### Strengthening stakeholder communication
 
@@ -163,7 +158,6 @@ For data managers, analysts, and modellers, OCEANIS can help surface the upstrea
 
 #### Individual reflection on a thesis or personal project
 
-OCEANIS does not require a group. As an individual - whether a student shaping a thesis chapter, a researcher scoping a new line of inquiry, or someone early in a project trying to get their bearings - working through the Spiderweb alone can be a surprisingly clarifying exercise. It helps us see where our energy and planning are concentrated, and where we may be assuming things will “just work out.” A student might find, for example, that they have thought carefully about data collection and analysis but have barely considered data management, communication, or how their work connects to broader societal questions. OCEANIS won’t write the thesis for us, but it will help us ask better questions of it.
 
 ### 1.6 OCEANIS in Relation to Other Frameworks {#other-frameworks}
 
