@@ -65,3 +65,52 @@ if (toc) {
 
   updateActive();
 }
+
+// Figure lightbox: clicking a figure opens it enlarged in a modal dialog.
+const figures = [...document.querySelectorAll(".manual-figure")];
+
+if (figures.length) {
+  const lightbox = document.createElement("dialog");
+  lightbox.className = "figure-lightbox";
+  lightbox.innerHTML = `
+    <button type="button" class="figure-lightbox-close" aria-label="Close enlarged figure">&times;</button>
+    <img alt="">
+    <p class="figure-lightbox-caption"></p>
+  `;
+  document.body.append(lightbox);
+
+  const lightboxImg = lightbox.querySelector("img");
+  const lightboxCaption = lightbox.querySelector(".figure-lightbox-caption");
+
+  lightbox.querySelector(".figure-lightbox-close").addEventListener("click", () => lightbox.close());
+
+  // Clicks on the backdrop land on the dialog element itself.
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) lightbox.close();
+  });
+
+  lightbox.addEventListener("close", () => document.body.classList.remove("has-lightbox"));
+
+  figures.forEach((figure) => {
+    const img = figure.querySelector("img");
+    if (!img) return;
+    const caption = figure.querySelector("figcaption");
+
+    // Wrap the image in a button so it is reachable and openable from the keyboard.
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "manual-figure-zoom";
+    trigger.setAttribute("aria-label", `Enlarge figure: ${img.alt}`);
+    img.replaceWith(trigger);
+    trigger.append(img);
+
+    trigger.addEventListener("click", () => {
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = caption?.textContent ?? "";
+      lightboxCaption.hidden = !caption;
+      document.body.classList.add("has-lightbox");
+      lightbox.showModal();
+    });
+  });
+}
